@@ -38,7 +38,7 @@ Dev -> QA -> Publish (QA 과정이 비효율적이고 시간이 오래 걸리는
  > 이 외에도 다양한 테스트 종류 존재함
 
 
-## TDD(Test-driven developement, 테스트 주도 개발) 란?
+## TDD(Test-driven development, 테스트 주도 개발) 란?
 > 개발(코드 작성)전에 테스트 콛드를 먼저 작성하는 방법
 - TDD flow
   1. 테스트 코드를 먼저 작성 함
@@ -73,3 +73,16 @@ Dev -> QA -> Publish (QA 과정이 비효율적이고 시간이 오래 걸리는
     - 배포 단계에서 자동화할 수 있을지 고민하는 단계
     - CI 과정을 통해 빌드 후 테스트까지 마침 -> 개발자가 한번더 검증 후 수동 배포 -> Continuous Delivery
     - 최종 배포 까지 자동화 -> Continuous Deployment
+
+
+## Unit Test
+> Test Runner : 테스트 실행 후 결과 생성   
+> Assertion : 테스트 조건, 비교를 통한 테스트 로직
+- 최근에는 따로 구분 않고 jest를 사용하여 한번에 테스트 코드 작성
+
+### jest 알아보기
+- js 환경에서 사용할 수 있는 `Testing Framework`
+- zero config -> 복잡한 설정 없이 사용 가능
+- snapshot test 지원
+- `jest --watch` : 변경된 commit 에 대해서 테스트 실행, `jest --watchAll` : 모든 코드 변경사항에 대해서 테스트 실행
+- 
