@@ -134,3 +134,27 @@ Dev -> QA -> Publish (QA 과정이 비효율적이고 시간이 오래 걸리는
 
 ## TDD(`Test-driven development`)
 - 테스트 주도 개발 : 개발 전 테스트 코드를 먼저 작성하는 방법
+
+# React TDD
+- 리액트 테스트는 크게 두가지 방법을 사용
+1. Rendering component trees (컴포넌트 트리를 렌더링, unit, integration test)
+2. Running a complete app (전체 앱을 실행 시켜 보기, end-to-end, e2e)
+- e2e 테스트는 브라우저 환경과 유사한 환경에서 전체 앱을 실행해서 테스트 하는 것을 말함 (각각의 리액트 컴포넌트가 문제가 없는데 에러나는 상황에 유용)
+- 유닛 테스트, 통합테스트는 리액트 환경에서 구분이 모호함 (구분하는건 크게 안 중요, 컴포넌트를 테스트하냐 앱전체를 실행하냐 정도만 구분하면 됨)
+- 통상적으로 unit은 하나의 단위이므로 util함수 하나, api함수 하나 단일 동작을하는 컴포넌트 하나를 테스트 하면 unit test
+- 통합 테스트는 여러 컴포넌트가 묶어있는 page 컴포넌트나, api호출등 여러 로직을 같이 테스트해야하는 큰 컴포넌트를 테스트하면 통합 테스트
+
+## 테스팅 툴을 선택할 때?
+- Iteration speed vs Realistic environment : 두가지 tradeoff를 고려
+  - Iteration speed: 변경 사항에 대해 테스팅 하고 검증하고 피드백을 받는 한 과정을 말함, 어떤 툴을 빠르게 이 테스팅 과정을 수행하고 피드백 할 수 있지만 실제 브라우저 환경을 정확히 구현하지 않음
+  - Realistic environment : e2e 테스트라고 함, 실제 브라우저 환경에서 돌려 보는 것, 단점으로 네트워크 환경에 의존하므로 ci server 환경에서 불안정 함
+- 리액트에서는 주로 `jest`, `react testing-library`를 사용해서 테스트 진행
+
+## Testing Tool
+- Jset :  js test runner, jsdom을 사용하여 테스트 하는 실제 브라우저에 dom으로 그려지는게 아니라, 메모리 상에 존재하는 가상 dom 같은걸로 테스트 하는 것
+- React Testing Library : 테스트를 조금 더 간편하게 할 수 있음, 리액트 컴포넌트의 내부 구현사항에 의존하지 않고 테스트 가능, 사용자 관점에서 ui 적인 것을 테스트 가능, 단 리액트 테스팅 라이브러리는 자식 노드까지 렌더링하기 때문에 이런 의존성은 test runner 써서 mocking 해야함
+정리 : RTL 는 컴포넌트 내부 구현 사항에 의존하지않고 react스럽게 테스팅을 간편하게 하기위해 개발된 라이브러리
+
+
+
+
